@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for, flash
-from prediction import test_date
+from prediction import predict_value
 # This is a sample Python script.
 
 # Press ⌃R to execute it or replace it with your code.
@@ -7,9 +7,10 @@ from prediction import test_date
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/prediction",methods=['GET'])
 def test():
-    return test_date("AMZN")
+    stock = request.args.get("stock")
+    return predict_value(stock)
 
 
 # Press the green button in the gutter to run the script.
