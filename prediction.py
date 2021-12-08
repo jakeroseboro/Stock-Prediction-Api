@@ -2,8 +2,8 @@ import datetime
 import numpy
 from dateutil.relativedelta import relativedelta
 import yfinance as yf
-from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 
 today = datetime.datetime.today();
 one_week_ago = today - relativedelta(weeks=1)
@@ -25,7 +25,7 @@ def predict_value(ticker):
     idx = numpy.float64(len(X.tolist()))
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
-    regressor = LinearRegression()
+    regressor = RandomForestRegressor()
     regressor.fit(X_train, Y_train)
     X_predict = [idx]
 
