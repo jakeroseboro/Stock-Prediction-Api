@@ -1,5 +1,4 @@
 import datetime
-
 import numpy
 from dateutil.relativedelta import relativedelta
 import yfinance as yf
@@ -7,12 +6,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 today = datetime.datetime.today();
-two_months_ago = today - relativedelta(months=2)
-tmrw = today + relativedelta(days=1)
-
-start = str(two_months_ago).split(' ')[0]
+one_week_ago = today - relativedelta(weeks=1)
+start = str(one_week_ago).split(' ')[0]
 end = str(today).split(' ')[0];
-predict = str(tmrw).split(' ')[0];
 
 
 def predict_value(ticker):
